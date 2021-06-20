@@ -13,6 +13,18 @@
     <link rel="stylesheet" href="/myStyle.cb4f6c25.css">
   <script src="/bulma.min.9a3deb19.js"></script><script src="/myStyle.cb4f6c25.js"></script></head>
   <body>
+    <!-- hero -->
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <p class="title">BIP URL Generator</p>
+          <p class="subtitle">
+            A small tool that might help you generate the URLs for your BIP
+            access.
+          </p>
+        </div>
+      </div>
+    </section>
     <!-- spits vue here -->
     <div id="app">
       <section class="section">
@@ -105,6 +117,15 @@
                 </div>
               </div>
             </div>
+          </div>
+
+          <div v-if="this.generatedURL">
+            <hr>
+            <article class="message">
+              <div class="message-body has-text-centered">
+                <a :href="this.generatedURL" target="_blank" rel="noopener noreferrer" class="fontMono">{{generatedURL}}</a>
+              </div>
+            </article>
           </div>
         </div>
       </section>

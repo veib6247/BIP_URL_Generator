@@ -11733,7 +11733,8 @@ new _vueEsm.default({
       input: "",
       isEmpty: false // the field is technically empty but will be validated once the button is clicked
 
-    }
+    },
+    generatedURL: ""
   },
   methods: {
     validateInputs: function validateInputs() {
@@ -11747,6 +11748,8 @@ new _vueEsm.default({
 
       if (!this.domain.isEmpty && !this.entityName.isEmpty) {
         this.generateURL();
+      } else {
+        this.generatedURL = "";
       }
     },
     generateURL: function generateURL() {
@@ -11778,10 +11781,7 @@ new _vueEsm.default({
       } // replace all blank spaces into "+" sign
 
 
-      var finalURL = bipURL.replaceAll(" ", "+");
-      console.log(finalURL); // ozoneblacklight@outlook.com
-      // MRxPM5mK
-      // https://test.prtpe.com/bip/login?merchant_name=spaced+merchant+name
+      this.generatedURL = bipURL.replaceAll(" ", "+");
     }
   }
 });
