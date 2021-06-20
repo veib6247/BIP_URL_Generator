@@ -1,4 +1,4 @@
-import Vue from "../node_modules/vue/dist/vue.esm.browser";
+import Vue from "../node_modules/vue/dist/vue.common.prod.js";
 
 /**
  * main vue instance
