@@ -4,17 +4,127 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BIP URL Generator</title>
-
+    <title>BIP | URL Generator</title>
+    <!-- Tab icon -->
+    <link
+      rel="shortcut icon"
+      href="./assets/link-solid.svg"
+      type="image/x-icon"
+    />
     <!-- using bulma css -->
     <link rel="stylesheet" href="./node_modules/bulma/css/bulma.min.css" />
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="./css/myStyle.css" />
   </head>
   <body>
     <!-- spits vue here -->
     <div id="app">
       <section class="section">
         <div class="container">
-          <p class="title">{{message}}</p>
+          <!-- mode -->
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label fontMain">Mode</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select class="fontMono" v-model="selectedMode">
+                      <option class="fontMono" v-for="mode in modes">
+                        {{mode}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- domain -->
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label fontMain">Domain</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input
+                    type="text"
+                    class="input fontMono"
+                    placeholder="prtpe.com"
+                    :class="{'is-danger': domain.isEmpty}"
+                    v-model="domain.input"
+                  />
+                </div>
+                <p class="help is-danger fontMain" v-if="domain.isEmpty">
+                  Domain is required!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- entity type -->
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label fontMain">Entity</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select class="fontMono" v-model="selectedEntityType">
+                      <option class="fontMono" v-for="entity in entityTypes">
+                        {{entity}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- entity name -->
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label fontMain">Entity Name</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input
+                    type="text"
+                    class="input fontMono"
+                    placeholder="name of the entity"
+                    :class="{'is-danger': entityName.isEmpty}"
+                    v-model="entityName.input"
+                  />
+                </div>
+                <p class="help is-danger fontMain" v-if="entityName.isEmpty">
+                  Entity name is required!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- button -->
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <button
+                    class="button is-link fontMain"
+                    @click="validateInputs"
+                  >
+                    Generate URL
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

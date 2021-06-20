@@ -11720,7 +11720,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 new _vueEsm.default({
   el: "#app",
   data: {
-    message: "You loaded this page on " + new Date().toLocaleString()
+    modes: ["TEST", "LIVE"],
+    selectedMode: "TEST",
+    domain: {
+      input: "",
+      isEmpty: false // the field is technically empty but will be validated once the button is clicked
+
+    },
+    entityTypes: ["DIVISION", "MERCHANT", "CHANNEL"],
+    selectedEntityType: "DIVISION",
+    entityName: {
+      input: "",
+      isEmpty: false // the field is technically empty but will be validated once the button is clicked
+
+    }
+  },
+  methods: {
+    validateInputs: function validateInputs() {
+      // validate domain
+      this.domain.isEmpty = this.domain.input == "" ? true : false; // validate entity name
+
+      this.entityName.isEmpty = this.entityName.input == "" ? true : false;
+    }
   }
 });
 },{"../node_modules/vue/dist/vue.esm.browser":"node_modules/vue/dist/vue.esm.browser.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

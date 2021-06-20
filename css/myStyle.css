@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+.fontMain {
+  font-family: "Raleway", sans-serif;
+}
+
+.fontMono {
+  font-family: "Roboto Mono", monospace;
+}
