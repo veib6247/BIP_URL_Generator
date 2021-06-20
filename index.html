@@ -52,9 +52,10 @@
                   <input
                     type="text"
                     class="input fontMono"
-                    placeholder="prtpe.com"
+                    placeholder='e.g. "prtpe.com"'
                     :class="{'is-danger': domain.isEmpty}"
                     v-model="domain.input"
+                    @keyup.enter="validateInputs"
                   />
                 </div>
                 <p class="help is-danger fontMain" v-if="domain.isEmpty">
@@ -95,9 +96,10 @@
                   <input
                     type="text"
                     class="input fontMono"
-                    placeholder="name of the entity"
+                    placeholder="Division, Merchant, Channel..."
                     :class="{'is-danger': entityName.isEmpty}"
                     v-model="entityName.input"
+                    @keyup.enter="validateInputs"
                   />
                 </div>
                 <p class="help is-danger fontMain" v-if="entityName.isEmpty">
